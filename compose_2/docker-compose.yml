@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:3.141.59
+    container_name: selenium_server_works
+    ports:
+      - "4444:4444"
+    logging:
+      driver: none
+
+  test_runner:
+    build:
+      context: D:\DockerCourceHomwork
+      dockerfile: D:\DockerCourceHomwork\compose_2\Dockerfile
+    image: autotests_for_compose
+    container_name: autotests_run
+    network_mode: "host"
+    volumes:
+    - ./tests:/tests/screenshots/
